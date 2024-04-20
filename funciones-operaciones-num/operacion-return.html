@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <label for="calcular">¿Quieres sumar o restar? </label>
+    
+    <!-- Botones para llamar a las funciones de sumar y restar -->
+    <button onclick="calcular('sumar')">Sumar</button>
+    <button onclick="calcular('restar')">Restar</button>
+    
+    <!-- Contenedor para mostrar el resultado -->
+    <div id="resultado"></div>
+
+    <script type="text/javascript">
+        // Función principal para calcular la operación
+        function calcular(operacion){
+            let resultado;
+            // Verifica qué operación se va a realizar
+            if (operacion === 'sumar') {
+                // Llama a la función para sumar y guarda el resultado
+                resultado = sumar();
+            } else if (operacion === 'restar') {
+                // Llama a la función para restar y guarda el resultado
+                resultado = restar();
+            }
+            // Llama a la función para mostrar el resultado
+            escribeResultado(resultado);
+        }
+
+        // Función para realizar la suma
+        function sumar(){
+            // Solicita al usuario los números a sumar
+            let numero1 = parseInt(prompt("Introduce el primer número"));
+            let numero2 = parseInt(prompt("Introduce el segundo número"));
+            // Retorna la suma de los números
+            return numero1 + numero2;
+        }
+
+        // Función para realizar la resta
+        function restar(){
+            // Solicita al usuario los números a restar
+            let numero1 = parseInt(prompt("Introduce el primer número"));
+            let numero2 = parseInt(prompt("Introduce el segundo número"));
+            // Retorna la resta de los números
+            return numero1 - numero2;
+        }
+
+        // Función para mostrar el resultado en el documento HTML
+        function escribeResultado(resultado){
+            // Selecciona el elemento donde se mostrará el resultado
+            let resultadoDiv = document.getElementById("resultado");
+            // Escribe el resultado en el elemento seleccionado
+            resultadoDiv.textContent = "El resultado es: " + resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="personas">¿Cuántas personas saludar?</label>
+    <input type="number" id="personas" />
+    <button onclick="numeroPersonas()">Saludar</button>
+    <div id="resultado"></div>
+
+    <script type="text/javascript">
+        function saludaNombre() {
+            let nombre = prompt("Introduce un nombre");
+            let saludar = prompt("Introduce un saludo");
+            let despedida = prompt("Introduce una despedida");
+            return `${saludar} ${nombre}, ${despedida} ${nombre}<br>`;
+        }
+
+        function numeroPersonas() {
+            let personasInput = document.getElementById("personas");
+            let personas = parseInt(personasInput.value);
+            let saludPersonas = [];
+
+            for (let i = 0; i < personas; i++) {
+                saludPersonas.push(saludaNombre());
+            }
+            escribeSaludos(saludPersonas);
+        }
+
+        function escribeSaludos(saludPersonas) {
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (saludPersonas.length > 0) {
+                saludPersonas.forEach(function (resultado) {
+                    let sp = document.createElement("span");
+                    sp.innerHTML = resultado;
+                    resultadoDiv.appendChild(sp);
+                });
+            } else {
+                resultadoDiv.textContent = "No hay resultados";
+            }
+        }
+    </script>
+</body>
+</html>
+
